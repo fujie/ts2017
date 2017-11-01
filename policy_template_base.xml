@@ -295,7 +295,7 @@
             <Item Key="ProviderName">lineoauth</Item>
             <Item Key="authorization_endpoint">https://access.line.me/dialog/oauth/weblogin</Item>
             <Item Key="AccessTokenEndpoint">https://api.line.me/v2/oauth/accessToken</Item>
-            <Item Key="ClaimsEndpoint">https://ts17.aadb2c.work/line.php</Item>
+            <Item Key="ClaimsEndpoint">https://ts17b2c.aadb2c.work/line.php</Item>
             <Item Key="client_id">{your_line_client_id}</Item>
             <Item Key="HttpBinding">POST</Item>
             <Item Key="UsePolicyInRedirectUri">false</Item>
