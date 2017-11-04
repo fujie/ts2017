@@ -116,6 +116,7 @@ LINE Loginで利用する鍵
 ![鍵の登録](https://github.com/fujie/ts2017/blob/pic/aadb2c_createkey.png)
 
 まずは、Azure AD B2C自体が使う鍵です。以下の通り作成してください。  
+
 ＜署名するための鍵＞
 
 * 作成オプション : Generate
@@ -153,8 +154,13 @@ Azure AD B2CのIEFではカスタム・ポリシーを使ってGUIでは実現�
 * Signup/Signinポリシー : [policy_template_susi.xml](https://github.com/fujie/ts2017/blob/master/policy_template_susi.xml)
 
 それぞれの修正点は以下の通りです。  
+
 ＜ベース・ポリシー＞
 
 * {your_domain} : 作成したAzure AD B2Cディレクトリのドメイン名へ変更（2か所あります）
 * {your_line_client_id} : 作成したLINE LoginのChannel Client IDへ変更（1か所）
+
+＜Signup/Signinポリシー＞
+
+* {your_domain} : 作成したAzure AD B2Cディレクトリのドメイン名へ変更（3か所あります）
 
