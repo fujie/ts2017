@@ -23,8 +23,10 @@ Tech Summit 2017 で使用したデモ環境を作成する為のチュートリ
 ### LINE Login
 LINE Loginの利用を開始します。  
 
-まず、[LINE Developer Console](https://developers.line.me/ja/) へアクセスします。  
-以下の画面が表示されますので、**「Start using LINE Login（LINEログインを始める）」**をクリックし、LINE IDでログインします。  
+まず、[LINE Developer Console](https://developers.line.me/ja/){:target="_blank"} へアクセスします。  
+以下の画面が表示されますので、
+**「Start using LINE Login（LINEログインを始める）」**
+をクリックし、LINE IDでログインします。  
 
 [![LINE Loginの利用を開始する](https://github.com/fujie/ts2017/blob/pic/line_start_line_login.png)]
 
