@@ -23,10 +23,14 @@ Tech Summit 2017 で使用したデモ環境を作成する為のチュートリ
 ### LINE Login
 LINE Loginの利用を開始します。  
 
-まず、&lt;a href="https://developers.line.me/" target="_blank"&gt;LINE Developer Console&lt;/a&gt;へアクセスします。  
+まず、[LINE Developer Console](https://developers.line.me/)へアクセスします。  
 以下の画面が表示されますので、
 **「Start using LINE Login（LINEログインを始める）」**
 をクリックし、LINE IDでログインします。  
 
 [![LINE Loginの利用を開始する](https://github.com/fujie/ts2017/blob/pic/line_start_line_login.png)]
+
+「＋」をクリックし、新しく追加するプロバイダ名を入力し、「追加」をクリックしてから「次のページ」をクリックして次ページへ遷移します。  
+
+[![新規プロバイダを作成する](https://github.com/fujie/ts2017/blob/pic/line_create_new_provider.png)]
 
