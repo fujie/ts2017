@@ -1,7 +1,7 @@
 # Azure AD B2C + LINE連携 / チュートリアル
 ## はじめに
 Tech Summit 2017 で使用したデモ環境を作成する為のチュートリアルです。  
-以下の注意事項です。
+以下、注意事項です。
 
 * 試用（ポリシー内から呼び出しているLINE連携モジュールは2017年12月末で削除予定です）
 * 動作・性能等の保証はありません。
@@ -58,6 +58,7 @@ LINE Loginの利用を開始します。
 ### Azure AD B2Cの設定
 続いてAzure AD B2Cの設定を行います。  
 
+#### Azure AD B2Cディレクトリの作成
 Azureポータルで「B2C」で検索をし、新規にAzure AD B2Cのリソースを作成します。  
 （「＋新規」をクリックし、検索窓に「B2C」と入れると「Azure Active Directory B2C」が候補に出てくるはずです）  
 
@@ -97,3 +98,63 @@ Azureポータルで「B2C」で検索をし、新規にAzure AD B2Cのリソー
 上手くディレクトリが作成できるとAzure AD B2Cの管理ブレードが表示されますので、「Identity Experience Framework」をクリックし、カスタムポリシーなどを設定していきます。
 
 ![Azure AD B2C管理ブレード](https://github.com/fujie/ts2017/blob/pic/aadb2c_blade.png)
+
+#### 鍵の作成
+ここでは、Azure AD B2C自体が使う2つの鍵の生成と、LINE Loginへアクセスする為のClient IDをAzure AD B2Cに登録します。
+
+Azure AD B2C自体が使う鍵
+
+* RP（Relying Party）に対して発行するJWT（JSON Web Token）に署名をするための鍵
+* RPに対して発行するJWTを暗号化するための鍵
+
+LINE Loginで利用する鍵
+
+* LINE LoginのClient Secret
+
+鍵は、IEF（Identity Experience Framework）の管理Bladeで登録・管理します。
+
+![鍵の登録](https://github.com/fujie/ts2017/blob/pic/aadb2c_createkey.png)
+
+まずは、Azure AD B2C自体が使う鍵です。以下の通り作成してください。  
+＜署名するための鍵＞
+
+* 作成オプション : Generate
+* 名称 : TokenSigningKeyContainer
+* タイプ : RSA
+* 用途 : Signature
+
+![署名鍵の登録](https://github.com/fujie/ts2017/blob/pic/aadb2c_createkey2.png)
+
+＜暗号化するための鍵＞
+* 作成オプション : Generate
+* 名称 : TokenEncritionKeyContainer
+* タイプ : RSA
+* 用途 : Encryption
+
+![暗号鍵の登録](https://github.com/fujie/ts2017/blob/pic/aadb2c_createkey3.png)
+
+
+次に、LINE LoginのClient Secretを登録します。
+
+* 作成オプション : Manual
+* 名称 : LINEOAuthKey
+* Secret : 先ほどLINE Developer Consoleで作成したChannelのClient Secret
+* 用途 : Signature
+
+![LINE鍵の登録](https://github.com/fujie/ts2017/blob/pic/aadb2c_createkey4.png)
+
+
+#### ポリシーの登録
+Azure AD B2CのIEFではカスタム・ポリシーを使ってGUIでは実現出来ない細かな処理を実装します。  
+今回はベース・ポリシーと、RP単位に設定するSignup/Signinポリシーの2つを実装します。  
+各ポリシーはXMLファイルで構成され、0から作成するのは現実的ではないので、ある程度作成済みのポリシーテンプレートを本レポジトリにアップしてあるので、こちらをダウンロードして構成してください。
+
+* ベース・ポリシー : [policy_template_base.xml](https://github.com/fujie/ts2017/blob/master/policy_template_base.xml)
+* Signup/Signinポリシー : [policy_template_susi.xml](https://github.com/fujie/ts2017/blob/master/policy_template_susi.xml)
+
+それぞれの修正点は以下の通りです。  
+＜ベース・ポリシー＞
+
+* {your_domain} : 作成したAzure AD B2Cディレクトリのドメイン名へ変更（2か所あります）
+* {your_line_client_id} : 作成したLINE LoginのChannel Client IDへ変更（1か所）
+
