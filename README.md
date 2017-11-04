@@ -58,4 +58,42 @@ LINE Loginの利用を開始します。
 ### Azure AD B2Cの設定
 続いてAzure AD B2Cの設定を行います。  
 
+Azureポータルで「B2C」で検索をし、新規にAzure AD B2Cのリソースを作成します。  
+（「＋新規」をクリックし、検索窓に「B2C」と入れると「Azure Active Directory B2C」が候補に出てくるはずです）  
 
+![Azure AD B2Cを作成する](https://github.com/fujie/ts2017/blob/pic/aadb2c_create.png)
+
+以下の情報を入力して「作成」をクリックしてディレクトリを作成します。  
+
+* 組織名 : 任意の組織名
+* ドメイン名 : 任意のドメイン名（ユニークな名前が必要）
+* 国/地域 : まだ日本は選べません
+
+ここで設定したドメイン名をメモしておきます。LINEやB2Cポリシーなど複数個所へ設定を行うためです。  
+
+![Azure AD B2Cを作成する](https://github.com/fujie/ts2017/blob/pic/aadb2c_create2.png)
+
+
+作成が完了した後、以下の画面が出てきた場合はAzureサブスクリプションへディレクトリの紐づけが行えていないので、紐づけを行います。（この表示にならなかった方はスキップしてもらって大丈夫です）  
+
+![Azure AD B2Cを作成する](https://github.com/fujie/ts2017/blob/pic/aadb2c_create3.png)
+
+（サブスクリプション紐づけが必要な場合のみ）  
+再度、Azureポータルより新規にAzure AD B2Cリソースの作成を行います。  
+![Azure AD B2Cを作成する](https://github.com/fujie/ts2017/blob/pic/aadb2c_create.png)
+
+今度は「既存のAzure AD B2Cディレクトリをサブスクリプションへ紐づける」を選択し、先ほど作成したディレクトリを選択し、以下の設定を行います。
+
+* Azure AD B2Cテナント : 先ほど作成したAzure AD B2Cディレクトリ
+* Azure AD B2Cリソース名 : 同上
+* サブスクリプション : 紐付け対象とするAzureサブスクリプション
+* リソースグループ : 任意のリソースグループ
+* リソースグループの地域 : 任意の国/地域
+
+![Azure AD B2Cを作成する](https://github.com/fujie/ts2017/blob/pic/aadb2c_create4.png)
+
+
+（ここから共通の手順）  
+上手くディレクトリが作成できるとAzure AD B2Cの管理ブレードが表示されますので、「Identity Experience Framework」をクリックし、カスタムポリシーなどを設定していきます。
+
+![Azure AD B2C管理ブレード](https://github.com/fujie/ts2017/blob/pic/aadb2c_blade.png)
