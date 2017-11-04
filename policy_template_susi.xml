@@ -2,11 +2,11 @@
                       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                       xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
                       PolicySchemaVersion="0.3.0.0"
-                      TenantId="{your_tenant}.onmicrosoft.com"
+                      TenantId="{your_domain}.onmicrosoft.com"
                       PolicyId="B2C_1A_signup_signin"
-                      PublicPolicyUri="http://{your_tenant}.onmicrosoft.com/B2C_1A_signup_signin">
+                      PublicPolicyUri="http://{your_domain}.onmicrosoft.com/B2C_1A_signup_signin">
   <BasePolicy>
-    <TenantId>{your_tenant}.onmicrosoft.com</TenantId>
+    <TenantId>{your_domain}.onmicrosoft.com</TenantId>
     <PolicyId>B2C_1A_TrustFrameworkBase</PolicyId>
   </BasePolicy>
   <RelyingParty>
