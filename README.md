@@ -158,7 +158,7 @@ Azure AD B2CのIEFではカスタム・ポリシーを使ってGUIでは実現�
 ＜ベース・ポリシー＞
 
 * {your_domain} : 作成したAzure AD B2Cディレクトリのドメイン名へ変更（2か所あります）
-* {your_line_client_id} : 作成したLINE LoginのChannel Client IDへ変更（1か所）
+* {your_line_client_id} : 作成したLINE LoginのChannel Client IDへ変更（1か所あります）
 
 ＜Signup/Signinポリシー＞
 
@@ -193,4 +193,58 @@ https://login.microsoftonline.com/te/{your_domain}.onmicrosoft.com/oauth2/authre
 
 と、言うことでテスト用のアプリケーションを本レポジトリにおいてあるので、ご自身のWebSite（Azure WebAppなど）へ配置して使ってみてください。（PHPです）  
 
-テストアプリケーションのダウンロードは[こちら]()から。
+### Azure AD B2Cへアプリケーション登録をする
+まずはアプリケーション（クライアント）をAzure AD B2Cへ登録します。  
+
+IEFの管理Bladeよりアプリケーションを開き、「追加」をクリックします。
+
+![アプリ追加](https://github.com/fujie/ts2017/blob/pic/aadb2c_app.png)
+
+以下のパラメータを指定して作成をします。
+
+* 名称 : 任意の名称
+* WebApp/API : はい
+* Reply URL : テストアプリケーションをホストするサーバのFQDN＋ファイル名（https://xxx.azurewebsites.net/test.phpなど）
+
+![アプリ登録](https://github.com/fujie/ts2017/blob/pic/aadb2c_app2.png)
+
+作成が完了したら、アプリケーションIDをメモしておきます。
+
+![アプリID](https://github.com/fujie/ts2017/blob/pic/aadb2c_app3.png)
+
+
+次にキーを開き、Client Secretを生成します。保存をクリックするとキーが生成され、表示されるのでメモしておきます。（一度画面を遷移すると表示できなくなるので確実にメモしておいてください。メモし忘れた場合は再作成が必要です）
+
+![アプリSecret](https://github.com/fujie/ts2017/blob/pic/aadb2c_app4.png)
+
+
+### テストアプリケーションの修正と配置
+テストアプリケーションは[こちら](https://github.com/fujie/ts2017/blob/master/test.php)からダウンロードできますので、ダウンロードして任意のサーバへ配置してください。
+
+ダウンロードしたソースはご自身の環境に合わせて以下を修正してください。
+
+* {your_appId} : Azure AD B2Cにアプリケーション登録をした際に割り当てられるアプリケーションID（先ほどメモしたもの）
+* {your_appSecret} : 同じくAzure AD B2C上に登録したアプリケーションのClient Secret（先ほどメモしたもの）
+* {your_website} : テストアプリケーションを配置した先のホスト名FQDN
+* {your_domain} : Azure AD B2Cのドメイン名（2か所あります）
+
+### テストを実行する
+これですべての設定は完了です。  
+早速テストアプリケーションへアクセスしてください。すると、LINEのログイン画面へリダイレクトされるはずです。  
+
+![テストLINE](https://github.com/fujie/ts2017/blob/pic/line_test.png)
+
+ログインすると属性の伝搬に関する認可要求がされるので許可してください。
+
+![テストLINE](https://github.com/fujie/ts2017/blob/pic/line_consent.png)
+
+上手くいくとLINEからAzure AD B2Cへ属性が渡され、登録が促されます。（初回のみ）
+
+![テストLINE](https://github.com/fujie/ts2017/blob/pic/aadb2c_regist.png)
+
+登録が完了するとアプリケーションへ遷移し、Azure AD B2Cからわたってきたid_tokenの中身が表形式で表示されます。
+
+![テストLINE](https://github.com/fujie/ts2017/blob/pic/aadb2c_test.png)
+
+
+お疲れ様でした！
