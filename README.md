@@ -28,9 +28,9 @@ LINE Loginの利用を開始します。
 **「Start using LINE Login（LINEログインを始める）」**
 をクリックし、LINE IDでログインします。  
 
-[![LINE Loginの利用を開始する](https://github.com/fujie/ts2017/blob/pic/line_start_line_login.png)]
+![LINE Loginの利用を開始する](https://github.com/fujie/ts2017/blob/pic/line_start_line_login.png)
 
 「＋」をクリックし、新しく追加するプロバイダ名を入力し、「追加」をクリックしてから「次のページ」をクリックして次ページへ遷移します。  
 
-[![新規プロバイダを作成する](https://github.com/fujie/ts2017/blob/pic/line_create_new_provider.png)]
+![新規プロバイダを作成する](https://github.com/fujie/ts2017/blob/pic/line_create_new_provider.png)
 
