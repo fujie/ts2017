@@ -128,7 +128,7 @@ LINE Loginで利用する鍵
 
 ＜暗号化するための鍵＞
 * 作成オプション : Generate
-* 名称 : TokenEncritionKeyContainer
+* 名称 : TokenEncryptionKeyContainer
 * タイプ : RSA
 * 用途 : Encryption
 
