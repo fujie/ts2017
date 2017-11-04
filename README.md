@@ -170,3 +170,27 @@ Azure AD B2CのIEFではカスタム・ポリシーを使ってGUIでは実現�
 ![ポリシーのアップロード](https://github.com/fujie/ts2017/blob/pic/aadb2c_upload.png)
 
 
+
+これでひとまずAzure AD B2Cの設定は完了です。
+
+### LINE Loginの設定（再び）
+ここで、LINE Loginに戻り、LINEから見るとRPとなるAzure AD B2Cの情報を登録します。
+
+先ほどのChannel設定を開き、左側のメニューより「アプリ設定」を開きます。ここにリダイレクト設定という項目があり、Callback URLを設定することが出来るので、Azure AD B2Cの情報を登録します。  
+
+設定するのは、  
+https://login.microsoftonline.com/te/{your_domain}.onmicrosoft.com/oauth2/authresp  
+という値です。もちろん{your_domain}は作成したAzure AD B2Cディレクトリのドメインを指定してください。
+
+![RP設定](https://github.com/fujie/ts2017/blob/pic/line_sp.png)
+
+
+これで、一応すべての情報の登録が完了しました。
+
+
+## 動作確認を行う
+ここまでの手順でIdPとしてのLINE、IdPブリッジとしてのAzure AD B2Cの設定は完了しましたが、肝心のアプリケーションがないと動作の確認ができません。  
+
+と、言うことでテスト用のアプリケーションを本レポジトリにおいてあるので、ご自身のWebSite（Azure WebAppなど）へ配置して使ってみてください。（PHPです）  
+
+テストアプリケーションのダウンロードは[こちら]()から。
